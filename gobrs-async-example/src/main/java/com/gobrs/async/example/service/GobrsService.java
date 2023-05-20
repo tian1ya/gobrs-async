@@ -58,12 +58,17 @@ public class GobrsService {
      * @return the async result
      */
     public AsyncResult gobrsTest() {
+
         Map<Class, Object> params = new HashMap<>();
         params.put(AServiceCondition.class, "1");
         params.put(CServiceCondition.class, "2");
+
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        AsyncResult resp = gobrsAsync.go("retryRule", () -> params);
+
+//        AsyncResult resp = gobrsAsync.go("retryRule", () -> params);
+        AsyncResult resp = gobrsAsync.go("general", () -> params);
+
         stopWatch.stop();
         System.out.println("cost" + stopWatch.getTotalTimeMillis());
         return resp;

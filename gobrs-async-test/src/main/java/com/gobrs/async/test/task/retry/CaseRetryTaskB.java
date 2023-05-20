@@ -34,13 +34,13 @@ public class CaseRetryTaskB extends AsyncTask {
     public Object task(Object o, TaskSupport support) {
         System.out.println("CaseRetryTaskB Begin");
         Long j = 0L;
-        for (int i = 0; i < 100000000000000000L; i++) {
-            if (i % 100000L == 0) {
-                System.out.println("test");
-            }
-            j++;
-        }
-//        Thread.sleep(100);
+//        for (int i = 0; i < 100000000000000000L; i++) {
+//            if (i % 100000L == 0) {
+//                System.out.println("test");
+//            }
+//            j++;
+//        }
+        Thread.sleep(100);
         System.out.println("CaseRetryTaskB End");
         return "AResult";
     }

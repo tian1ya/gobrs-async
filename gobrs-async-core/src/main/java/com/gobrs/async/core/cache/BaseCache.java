@@ -5,6 +5,7 @@ package com.gobrs.async.core.cache;
  *
  * @param <K> the type parameter
  * @param <V> the type parameter
+ *           <I> 获取一个缓存对象，该对象也是 <K,V> 类型
  * @program: gobrs -async
  * @ClassName BaseCache
  * @description:

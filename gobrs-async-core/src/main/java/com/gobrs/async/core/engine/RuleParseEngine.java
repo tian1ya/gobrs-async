@@ -53,7 +53,7 @@ public class RuleParseEngine extends AbstractEngine {
 
     @Override
     public void doParse(GobrsAsyncRule rule, boolean reload) {
-
+        // ”;“
         String[] taskFlows = rule.getContent().replaceAll("\\s+", "").split(gobrsConfig.getSplit());
         /**
          * cache rules
@@ -61,15 +61,15 @@ public class RuleParseEngine extends AbstractEngine {
         Map<String, AsyncTask<?, ?>> cacheTaskWrappers = new HashMap<>();
 
         List<AsyncTask<?, ?>> pioneer = new ArrayList<>();
-
+        // pioneer 找到头任务
         for (String taskFlow : taskFlows) {
 
-            String[] taskArr = taskFlow.split(gobrsConfig.getPoint());
+            String[] taskArr = taskFlow.split(gobrsConfig.getPoint()); // ”->“
             if (taskArr.length == 0) {
                 throw new GobrsAsyncException("com.gobrs.async.rule com.gobrs.async.config error !!!");
             }
             String door = taskArr[0];
-            if (door.contains(Constant.sp)) {
+            if (door.contains(Constant.sp)) { // ","
                 String[] childFlows = door.split(Constant.sp);
                 for (String cf : childFlows) {
                     AsyncTask<?, ?> asyncTask = EngineExecutor.getAsyncTask(cf);
@@ -80,7 +80,7 @@ public class RuleParseEngine extends AbstractEngine {
             }
         }
         /**
-         * Start the com.gobrs.async.com.gobrs.async.test.task process The sub-process in the com.gobrs.async.com.gobrs.async.test.task process is opened
+         * pioneer 作为头任务，给taskFlow 的 denpendedTasks 中开始添加任务
          */
         gobrsAsync.begin(rule.getName(), pioneer, reload);
 
@@ -88,11 +88,11 @@ public class RuleParseEngine extends AbstractEngine {
             /**
              * Parse tasks according to parsing rules
              */
-            String[] taskArr = taskFlow.split(gobrsConfig.getPoint());
+            String[] taskArr = taskFlow.split(gobrsConfig.getPoint());// ->
             List<String> arrayList = Arrays.asList(taskArr);
             String leftTaskName = arrayList.get(0);
             TaskReceive taskReceive;
-            if (leftTaskName.contains(Constant.sp)) {
+            if (leftTaskName.contains(Constant.sp)) {// ","
                 String[] split = leftTaskName.split(Constant.sp);
                 for (String s : split) {
                     taskReceive = gobrsAsync.after(rule.getName(), EngineExecutor.getAsyncTask(s));
@@ -110,11 +110,11 @@ public class RuleParseEngine extends AbstractEngine {
 
     private void doChildFlow(TaskReceive taskReceive, Map<String, AsyncTask<?, ?>> cacheTaskWrappers, List<String> arrayList) {
         for (int i = 1; i < arrayList.size(); i++) {
-
+            // 从第2个任务开始
             String taskBean = arrayList.get(i);
 
             /**
-             * Parse Task Rules
+             * Parse Task Rules， ","
              */
             if (taskBean.contains(Constant.sp)) {
 

@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * The type Gobrs method task configuration.
- *
+ * 这里不需要在 使用 @Configuration 注解，因为这个类在
+ * @Import(GobrsMethodTaskConfiguration.class) 就会被导入
  * @program: gobrs -async
  * @ClassName GobrsMethodTaskConfiguration
  * @description:

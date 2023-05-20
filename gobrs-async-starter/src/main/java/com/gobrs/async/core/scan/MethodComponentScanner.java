@@ -183,6 +183,9 @@ public class MethodComponentScanner extends BaseScannner implements ApplicationC
 
     /**
      * The type Method task factory bean.
+     * FactoryBean:
+     *  If a bean implements this interface, it is used as a factory for an object to expose,
+     *  not directly as a bean instance that will be exposed itself
      */
     public static class MethodTaskFactoryBean implements FactoryBean<MethodTaskAdapter> {
 

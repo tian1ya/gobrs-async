@@ -54,13 +54,13 @@ public class GobrsPropertyAutoConfiguration {
         List<GobrsAsyncRule> rList = rules.stream().map(x -> {
             GobrsAsyncRule r = new GobrsAsyncRule();
             LogConfig logConfig = x.getLogConfig();
-            if (Objects.nonNull(logConfig)) {
+            if (Objects.nonNull(logConfig)) { // 配置文件有配置
                 r.setErrLogabled(logConfig.getErrLogabled());
                 r.setCostLogabled(logConfig.getCostLogabled());
             }
 
             GobrsAsyncProperties.ThreadPool threadPool = x.getThreadPool();
-            if (Objects.nonNull(threadPool)) {
+            if (Objects.nonNull(threadPool)) { // 配置文件有配置
                 ThreadPool asThreadPool = threadPool(threadPool);
                 if (Objects.nonNull(asThreadPool)) {
                     r.setThreadPool(asThreadPool);
@@ -79,7 +79,7 @@ public class GobrsPropertyAutoConfiguration {
     }
 
     /**
-     *
+     * 为什么还要新建呢 ?
      */
     private ThreadPool threadPool(GobrsAsyncProperties.ThreadPool threadPool) {
         if (Objects.nonNull(threadPool)) {

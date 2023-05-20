@@ -11,6 +11,7 @@ import org.springframework.beans.factory.InitializingBean;
  * @description:
  * @author: sizegang
  * @create: 2023 -01-04
+ * InitializingBean: react once all their properties have been set by a BeanFactory
  */
 public abstract class BaseScannner implements Scanner, InitializingBean {
     @Override

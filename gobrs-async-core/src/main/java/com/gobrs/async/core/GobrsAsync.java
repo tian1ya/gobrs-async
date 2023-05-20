@@ -9,7 +9,7 @@ import lombok.SneakyThrows;
 import java.util.*;
 
 /**
- * The type Gobrs async.
+ * The type Gobrs async. 任务触发器
  *
  * @program: gobrs -async-starter
  * @ClassName gobrs -Async
@@ -112,7 +112,8 @@ public class GobrsAsync {
     @SneakyThrows
     public AsyncResult go(String ruleName, AsyncParam param, Set<String> optionalTasks, long timeout) {
         if (check(ruleName).isPresent()) {
-            TaskLoader taskLoader = this.trigger.get(ruleName).trigger(param, timeout, optionalTasks);
+            TaskTrigger taskTrigger = this.trigger.get(ruleName);
+            TaskLoader taskLoader = taskTrigger.trigger(param, timeout, optionalTasks);
             AsyncResult result = taskLoader.load();
             clear(taskLoader);
             return result;

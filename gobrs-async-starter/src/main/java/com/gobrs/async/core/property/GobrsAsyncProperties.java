@@ -26,7 +26,7 @@ import static com.gobrs.async.core.common.def.DefaultConfig.*;
  * @author: sizegang
  * @create: 2022 -01-08 17:30
  * @Version 1.0
- * @date 2022 -01-27 22:04
+ * @date 2022 -01-27 22:04   gobrs.yaml 中 gobrs.async.config 后面的内容和这类中的属性进行序列化
  */
 @ConfigurationProperties(prefix = GobrsAsyncProperties.PREFIX, ignoreInvalidFields = false)
 @PropertySource(value = {"classpath:config/gobrs.yaml", "classpath:config/gobrs.yml", "classpath:config/gobrs.properties"}, ignoreResourceNotFound = false, factory = GobbrsPropertySourceFactory.class)

@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * The type Rule post processor.
- *
+ *   Interface to be implemented by application event listeners
  * @author sizegang1
  * @program: gobrs -async
  * @ClassName RulePostProcessor
@@ -68,7 +68,7 @@ public class RulePostProcessor implements ApplicationListener<ApplicationReadyEv
                 for (GobrsAsyncRule rule : rules) {
                     configManager.addRule(rule.getName(), rule);
                     engine.doParse(rule, false);
-                    gobrsAsync.readyTo(rule.getName());
+                    gobrsAsync.readyTo(rule.getName()); // new TaskTrigger,  任务(Flow)启动器
                 }
             } catch (Exception exception) {
                 logger.error("RulePostProcessor parse error ", exception);

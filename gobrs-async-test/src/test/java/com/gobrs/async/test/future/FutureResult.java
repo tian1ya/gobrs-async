@@ -25,7 +25,8 @@ public class FutureResult {
     private GobrsAsync gobrsAsync;
 
     /**
-     * 获取非强依赖任务的返回结果  如下： C任务获取A任务的返回结果， 从任务配置上看 C并不需要A 执行完成后再执行C 所有 通过Future方式 C有能力获取到A的返回结果
+     * 获取非强依赖任务的返回结果如下：
+     * C任务获取A任务的返回结果， 从任务配置上看 C并不需要A 执行完成后再执行C 所有 通过Future方式 C有能力获取到A的返回结果
      * Future task rule.
      * - name: "futureTaskRule"
      *   content: "futureTaskA->futureTaskB;futureTaskC->futureTaskD"

@@ -13,6 +13,7 @@ import static com.gobrs.async.core.common.def.DefaultConfig.*;
 
 /**
  * The type Gobrs config.
+ * 定义 Rule 以及 线程池的配置
  *
  * @program: gobrs -async
  * @ClassName GobrsConfig
@@ -25,6 +26,7 @@ public class GobrsConfig {
 
     /**
      * The constant PREFIX.
+     *  gobrs.async.config
      */
     public static final String PREFIX = ConfigPropertiesConstant.PREFIX;
 

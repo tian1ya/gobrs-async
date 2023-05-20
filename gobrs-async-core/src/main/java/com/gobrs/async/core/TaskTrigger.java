@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 import static com.gobrs.async.core.common.def.FixSave.LOGGER_PLUGIN;
 
 /**
- * The type Task trigger.
+ * The type Task trigger. 任务启动器
  *
  * @param <P> the type parameter
  * @program: gobrs -async-starter

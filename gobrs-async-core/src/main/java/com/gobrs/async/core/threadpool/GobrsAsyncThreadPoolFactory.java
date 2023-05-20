@@ -130,6 +130,10 @@ public class GobrsAsyncThreadPoolFactory {
             }
             return Executors.newCachedThreadPool();
         }
+        /**
+         * Creates a new ThreadPoolExecutor with the
+         * given initial parameters and default thread factory
+         */
         return new ThreadPoolExecutor(threadPool.getCorePoolSize(),
                 threadPool.getMaxPoolSize(), threadPool.getKeepAliveTime(), threadPool.getTimeUnit(),
                 threadPool.getWorkQueue(), ThreadPoolBuilder.caseReject(threadPool.getRejectedExecutionHandler()));

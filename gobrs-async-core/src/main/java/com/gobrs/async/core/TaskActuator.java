@@ -172,7 +172,7 @@ public class TaskActuator<Param, Result> implements Callable, Cloneable {
                 stopAsync0(parameter, support);
 
                 /**
-                 * 状态改变
+                 * 状态改变, 更新状态，如果运行成功，则置为 TASK_FINISH
                  */
                 change();
 

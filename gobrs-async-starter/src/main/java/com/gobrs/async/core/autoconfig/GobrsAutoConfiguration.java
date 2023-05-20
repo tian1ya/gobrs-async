@@ -124,7 +124,8 @@ public class GobrsAutoConfiguration {
 
     /**
      * Config manager config manager.
-     *
+     *  only matches when beans meeting all the specified requirements are
+     *  already contained in the BeanFactory.
      * @return the config manager
      */
     @ConditionalOnBean(ConfigFactory.class)
