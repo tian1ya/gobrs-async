@@ -11,7 +11,9 @@ import org.springframework.context.ApplicationContextAware;
 
 /**
  * The type Gobrs com.gobrs.async.spring.
- *
+ * XXXAware，可以拥有 SetXXX 的方法，这里是 ApplicationContextAware
+ * 所以这里的实现类 BeanHolder 就有一个 SetApplicationContext 的方法，也就是
+ * BeanHolder 持有 ApplicationContext 这个对象
  * @author sizegang1
  * @date 2022 -01-27 23:56
  */
@@ -109,6 +111,7 @@ public class BeanHolder implements ApplicationContextAware, BeanFactoryPostProce
     /**
      * @param beanFactory
      * @throws BeansException
+     * 在所有Bean definition 都已经就绪，但是还没有实例化bean 的时候调用，可以修改beanDefinition
      */
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {

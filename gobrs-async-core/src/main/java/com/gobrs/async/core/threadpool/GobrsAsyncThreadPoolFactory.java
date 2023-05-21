@@ -35,6 +35,7 @@ public class GobrsAsyncThreadPoolFactory {
 
     /**
      * The constant cachedExecutors.
+     * 对每个 rule 创建自己的 线程池
      */
     public static final Map<String, ExecutorService> cachedExecutors = new ConcurrentHashMap<>();
 

@@ -24,6 +24,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @program: gobrs -async
  * @ClassName RulePostProcessor
  * @description: Task flow resolver The implementation ApplicationListener gets the Spring context, which in turn gets the Bean instance
+ * ApplicationListener 实现 Listener，当并监听 ApplicationReadyEvent 事件: indicate that the application is ready to service requests
+ * 当Spring启动并可以对外响应服务，那么触发事件，然后执行 onApplicationEvent 该方法
  */
 public class RulePostProcessor implements ApplicationListener<ApplicationReadyEvent> {
     /**

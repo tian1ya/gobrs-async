@@ -40,8 +40,12 @@ import static com.gobrs.async.core.autoconfig.GobrsAutoConfiguration.GOBRS_NAMES
  */
 @Configuration
 @AutoConfigureAfter({GobrsPropertyAutoConfiguration.class})
+//  GobrsPropertyAutoConfiguration bean 注入之后在注入 GobrsAutoConfiguration
 @ConditionalOnProperty(prefix = GobrsAsyncProperties.PREFIX, value = "enable", matchIfMissing = true, havingValue = "true")
+// 判断改bean是否应该创建，条件是：在配置文件 {prefix} 中存在 {value}={havingValue} 的配置，matchIfMissing 表示如果不埋满足这个条件
+// 那么也符合条件，注入bean
 @Import(BeanHolder.class)
+// 注入 BeanHolder，其效果和在BeanHolder 上加上 @Configuration 注解
 @ComponentScan(value = GOBRS_NAMESPACE)
 public class GobrsAutoConfiguration {
 
@@ -83,7 +87,8 @@ public class GobrsAutoConfiguration {
 
     /**
      * Gobrs async thread pool factory gobrs async thread pool factory.
-     *
+     * 从 yaml 配置文件中获取到和线程池相关的配置，配置共享的线程池对象，以及每个rule 独有的线程池
+     * 将这些线程池全部放在 这个工厂中
      * @param gobrsConfig the gobrs config
      * @return the gobrs async thread pool factory
      */
@@ -95,7 +100,8 @@ public class GobrsAutoConfiguration {
 
     /**
      * Rule engine rule engine.
-     *
+     * @ConditionalOnMissingBean 注解解释 RuleEngine 类型的的实现类 的Bean 只能注入一个，
+     * 当超过1个的 RuleEngine 的实现类被注入，那么就会抛出异常
      * @param gobrsConfig the gobrs config
      * @param gobrsAsync  the gobrs async
      * @return the rule engine
@@ -127,6 +133,7 @@ public class GobrsAutoConfiguration {
      *  only matches when beans meeting all the specified requirements are
      *  already contained in the BeanFactory.
      * @return the config manager
+     * 对 ConfigFactory 进行的操作，ConfigFactory直接是从spring 的容器中获取的，不是传入的
      */
     @ConditionalOnBean(ConfigFactory.class)
     @Bean
@@ -136,7 +143,7 @@ public class GobrsAutoConfiguration {
 
     /**
      * Rule engine post processor rule post processor.
-     *
+     * 解析 rule
      * @param configManager the config manager
      * @return the rule post processor
      */
@@ -147,7 +154,7 @@ public class GobrsAutoConfiguration {
 
     /**
      * Gobrs async gobrs async.
-     *
+     * 任务触发器，执行任务的
      * @return the gobrs async
      */
     @Bean

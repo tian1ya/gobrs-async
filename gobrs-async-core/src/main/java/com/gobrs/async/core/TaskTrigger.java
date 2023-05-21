@@ -73,7 +73,7 @@ class TaskTrigger<P> {
 
 
         /**
-         * Subtasks under a com.gobrs.async.com.gobrs.async.test.task
+         * Subtasks under a com.gobrs.async.com.gobrs.async.test.task，任务流图的邻接表存储结构
          */
         Map<AsyncTask<?, ?>, List<AsyncTask<?, ?>>> downTasksMap = copyDependTasks(taskFlow.getDependsTasks());
 
@@ -82,7 +82,7 @@ class TaskTrigger<P> {
          */
         Map<AsyncTask<?, ?>, List<AsyncTask<?, ?>>> upwardTasksMap = new HashMap<>();
 
-        for (AsyncTask<?, ?> task : downTasksMap.keySet()) {
+        for (AsyncTask<?, ?> task : downTasksMap.keySet()) { // key 拿到所有的任务节点
             upwardTasksMap.put(task, new ArrayList<>(1));
         }
 

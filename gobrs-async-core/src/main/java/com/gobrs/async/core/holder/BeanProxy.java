@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * The type Bean proxy.
- *
+ * 缓存 bean
  * @program: gobrs -async
  * @ClassName BeanProxy
  * @description:

@@ -50,7 +50,7 @@ public class RuleParseEngine extends AbstractEngine {
         this.gobrsAsync = gobrsAsync;
         RuleParseEngine.gCacheManager = gCacheManager;
     }
-
+    // 将配置创建为图临接表数据结构
     @Override
     public void doParse(GobrsAsyncRule rule, boolean reload) {
         // ”;“
@@ -125,7 +125,7 @@ public class RuleParseEngine extends AbstractEngine {
                  * Load tasks from the rules com.gobrs.async.engine
                  */
                 List<AsyncTask<?, ?>> asyncTasks = new ArrayList<>();
-
+                // 使用 , 配置的，中间并行执行的任务
                 for (String tbean : beanList) {
                     asyncTasks.add(EngineExecutor.getWrapperDepend(cacheTaskWrappers, tbean, taskReceive, false));
                 }

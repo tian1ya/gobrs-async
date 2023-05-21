@@ -27,6 +27,12 @@ import static com.gobrs.async.core.common.def.DefaultConfig.*;
  * @create: 2022 -01-08 17:30
  * @Version 1.0
  * @date 2022 -01-27 22:04   gobrs.yaml 中 gobrs.async.config 后面的内容和这类中的属性进行序列化
+ * adding a PropertySource to Spring's Environment.
+ * PropertySource 指定读取那些文件，默认值读取 properties 文件
+ * factory 可以自定义读取任意格式的文件
+ * ConfigurationProperties：指定读取文件中配置的前缀，非配置前缀的内容会被过滤，不读取
+ * 默认可以不用这个注解 PropertySource，读取 application.yaml
+ * 有了这个注解，就可以读取任何路径下的配置文件
  */
 @ConfigurationProperties(prefix = GobrsAsyncProperties.PREFIX, ignoreInvalidFields = false)
 @PropertySource(value = {"classpath:config/gobrs.yaml", "classpath:config/gobrs.yml", "classpath:config/gobrs.properties"}, ignoreResourceNotFound = false, factory = GobbrsPropertySourceFactory.class)
@@ -85,7 +91,7 @@ public class GobrsAsyncProperties {
 
 
     /**
-     * The type Thread pool.
+     * The type Thread pool. 线程池的配置
      */
     @Data
     public static class ThreadPool {

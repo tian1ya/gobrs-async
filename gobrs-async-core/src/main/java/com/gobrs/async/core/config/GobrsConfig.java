@@ -14,7 +14,7 @@ import static com.gobrs.async.core.common.def.DefaultConfig.*;
 /**
  * The type Gobrs config.
  * 定义 Rule 以及 线程池的配置
- *
+ * 读取 yaml 中的任务的配置，并建模到这里
  * @program: gobrs -async
  * @ClassName GobrsConfig
  * @description:

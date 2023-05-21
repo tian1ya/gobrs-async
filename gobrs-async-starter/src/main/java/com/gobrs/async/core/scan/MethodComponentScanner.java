@@ -62,7 +62,7 @@ public class MethodComponentScanner extends BaseScannner implements ApplicationC
 
     @Override
     public void doScan() {
-
+        // Find all beans which are annotated with the supplied Annotation type, returning a Map of bean names with corresponding bean instances
         Map<String, Object> values = applicationContext.getBeansWithAnnotation(MethodComponent.class);
         GCache<String, MethodTaskAdapter, Map<String, MethodTaskAdapter>> methodTaskCache = gCacheManager.getGCache(TaskEnum.METHOD.getType());
         Map<String, MethodTaskAdapter> instance = methodTaskCache.instance();

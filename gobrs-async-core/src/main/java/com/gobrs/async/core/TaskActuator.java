@@ -41,7 +41,7 @@ import static com.gobrs.async.core.timer.GobrsFutureTask.STOP_STAMP;
 
 /**
  * The type Task actuator.
- *
+ * 致动（促动，激励，调节）器；传动（装置，机构）；拖动装置；马达；操作机构；执行机构（元件）
  * @param <Param>  the type parameter
  * @param <Result> the type parameter
  */

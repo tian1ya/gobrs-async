@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The type G cache manager.
- *
+ * 将所有的 Cache 的实现类缓存起来，k:Cache类型，v: Cache
  * @program: gobrs -async
  * @ClassName GCacheManager
  * @description:

@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ConfigFactory {
 
     /**
-     * 任务流程独特配置
+     * 任务流程独特配置, 保存需要执行的规则
      */
     private Map<String, GobrsAsyncRule> processRules = new ConcurrentHashMap();
 
